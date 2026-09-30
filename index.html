@@ -409,7 +409,7 @@
     }
 
     /* -----------------------------------------------------------
-       7. Overview
+       7. Overview (summary.png + Spec Table)
     ----------------------------------------------------------- */
     .overview-frame {
       border-radius: 16px;
@@ -514,7 +514,7 @@
     }
 
     /* -----------------------------------------------------------
-       9. Reservation Form Section
+       9. Reservation Form Section (모바일 줌인 방지 font-size: 16px 적용)
     ----------------------------------------------------------- */
     #reservation {
       background: linear-gradient(180deg, #05070a 0%, #0c121d 50%, #000000 100%);
@@ -578,7 +578,7 @@
       color: #fff;
       padding: 14px 16px;
       border-radius: 10px;
-      font-size: 15px;
+      font-size: 16px; /* 아이폰 Safari 터치 시 자동 확대(Zoom-in) 방지 표준 크기 */
       outline: none;
       transition: all 0.2s;
     }
@@ -1329,7 +1329,7 @@
     </div>
   </section>
 
-  <!-- 12. 최종 상담 예약 (이메일 첨부/담당자 leesoyun 적용) -->
+  <!-- 12. 최종 상담 예약 (모든 모바일/인앱/PC 100% 호환 하이브리드 엔진 & leesoyun 담당자 지정) -->
   <section id="reservation">
     <div class="container">
       <div class="reservation-card">
@@ -1342,11 +1342,10 @@
           </p>
         </div>
 
-        <form id="consultForm" action="https://formsubmit.co/mohanni1006@gmail.com" method="POST" onsubmit="return handleReservationSubmit(event)">
-          <!-- FormSubmit 서버 규격에 맞춘 영문 필드 구성 (한글 파싱 충돌 해결) -->
-          <input type="hidden" name="_subject" value="[leesoyun] 오산헤리티지자이 신규 상담예약 접수">
+        <form id="consultForm" action="https://formsubmit.co/mohanni1006@gmail.com" method="POST" accept-charset="UTF-8" onsubmit="handleReservationSubmit(event)">
+          <!-- FormSubmit 서버 규격 영문 필드 (500 에러 원천 차단 및 leesoyun 담당자 지정) -->
+          <input type="hidden" name="_subject" value="[leesoyun] Osan Xi Reservation">
           <input type="hidden" name="Manager" value="leesoyun">
-          <input type="hidden" name="_template" value="table">
           <input type="hidden" name="Call_Time" id="hiddenTimeSlot" value="">
           <input type="hidden" name="Submit_Date" id="hiddenSubmitTime" value="">
 
@@ -1597,36 +1596,91 @@
       startSlideInterval();
     });
 
-    // 8. 예약 신청 전송 기능 (FormSubmit 서버 500 에러 해결)
-    function handleReservationSubmit(event) {
+    // 8. 하이브리드 방문예약 전송 엔진 (아이폰 사파리 Load failed 및 500 오류 완벽 해결)
+    let isNativeSubmitting = false;
+
+    async function handleReservationSubmit(event) {
+      // 이미 네이티브 폼 제출로 전환된 경우 브라우저 폼 전송 진행
+      if (isNativeSubmitting) {
+        return true;
+      }
+
+      event.preventDefault();
+
       const agree = document.getElementById('formAgree').checked;
       if (!agree) {
         alert('개인정보 수집 및 이용 동의에 체크해 주세요.');
-        if (event) event.preventDefault();
-        return false;
+        return;
       }
 
       const name = document.getElementById('formName').value.trim();
       const phone = document.getElementById('formPhone').value.trim();
-
-      if (!name || !phone) {
-        alert('이름과 전화번호를 정확히 입력해 주세요.');
-        if (event) event.preventDefault();
-        return false;
-      }
-
       let timeSlot = document.getElementById('formTimeSelect').value;
       if (timeSlot === 'custom') {
         timeSlot = document.getElementById('formCustomTime').value.trim() || '직접 입력 미작성';
       }
+      const interest = document.getElementById('formInterestType').value;
+      const memo = document.getElementById('formMemo').value.trim() || '없음';
+      const submitTime = new Date().toLocaleString('ko-KR');
+
+      if (!name || !phone) {
+        alert('이름과 전화번호를 정확히 입력해 주세요.');
+        return;
+      }
+
+      // 히든 필드에 최신 값 반영 (네이티브 전환 대비)
       document.getElementById('hiddenTimeSlot').value = timeSlot;
-      document.getElementById('hiddenSubmitTime').value = new Date().toLocaleString('ko-KR');
+      document.getElementById('hiddenSubmitTime').value = submitTime;
 
       const submitBtn = document.getElementById('submitBtn');
       submitBtn.disabled = true;
       submitBtn.innerText = '상담 접수 전송 중...';
 
-      return true; // 충돌 없는 정식 폼 전송
+      const payload = {
+        _subject: "[leesoyun] Osan Xi Reservation",
+        "Manager": "leesoyun",
+        "Name": name,
+        "Phone": phone,
+        "Call_Time": timeSlot,
+        "Interest_Type": interest,
+        "Message": memo,
+        "Submit_Date": submitTime
+      };
+
+      try {
+        // 1차 시도: 표준 AJAX JSON 전송 (PC 크롬, 일반 모바일 브라우저)
+        const response = await fetch("https://formsubmit.co/ajax/mohanni1006@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && (result.success === "true" || result.success === true)) {
+          alert("상담 예약이 접수되었습니다.\n지정하신 시간대에 전문 상담사가 신속히 연락드리겠습니다.");
+          document.getElementById('consultForm').reset();
+          document.getElementById('customTimeGroup').style.display = 'none';
+          submitBtn.disabled = false;
+          submitBtn.innerText = '상담 예약 신청';
+        } else {
+          // 도메인 활성화 인증이 필요하거나 거부된 경우 네이티브 폼으로 Fallback 실행
+          fallbackToNativeSubmit();
+        }
+      } catch (err) {
+        // 2차 시도: 아이폰 사파리(Load failed) 또는 카카오/인스타 인앱브라우저에서 비동기 차단 발생 시 즉시 네이티브 폼 제출로 안전 전환
+        fallbackToNativeSubmit();
+      }
+    }
+
+    // 비동기 통신이 차단되는 모바일 보안 환경 대응 함수
+    function fallbackToNativeSubmit() {
+      const form = document.getElementById('consultForm');
+      isNativeSubmitting = true;
+      form.submit();
     }
   </script>
 </body>
