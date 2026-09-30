@@ -9,7 +9,7 @@
   <meta name="description" content="병점역 新주거타운의 중심! 1,783세대 매머드급 대단지 자이. 계약금 500만원, 입주시까지 5%, 26층 스카이라운지 특화.">
   <meta name="keywords" content="오산헤리티지자이, 병점역 자이, 오산자이, 병점역 아파트, GTX-C 병점역, 오산헤리티지자이 분양가, 모델하우스">
 
-  <!-- Open Graph (main.jpg 적용) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="오산헤리티지자이 | 공식 분양홍보관">
   <meta property="og:description" content="1,783세대 랜드마크 대단지 자이. 계약금 500만원 정액제, 입주시까지 5% 확정!">
@@ -80,7 +80,7 @@
     }
 
     /* -----------------------------------------------------------
-       2. Header GNB
+       2. Header GNB (우측 상단 전화 버튼 없음)
     ----------------------------------------------------------- */
     header {
       position: sticky;
@@ -135,23 +135,6 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
-    }
-    .btn-header-call {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-      color: #000;
-      font-weight: 800;
-      font-size: 14px;
-      padding: 9px 18px;
-      border-radius: 25px;
-      box-shadow: 0 4px 12px rgba(197, 160, 89, 0.35);
-      transition: transform 0.2s;
-    }
-    .btn-header-call:hover {
-      transform: translateY(-2px);
     }
 
     .mobile-menu-toggle {
@@ -168,7 +151,7 @@
     }
 
     /* -----------------------------------------------------------
-       3. 메인 HERO 섹션 (6.jpg 제거 -> 프리미엄 입체 CSS 배경)
+       3. 메인 HERO 섹션
     ----------------------------------------------------------- */
     #hero {
       position: relative;
@@ -177,8 +160,8 @@
         radial-gradient(circle at 85% 30%, rgba(0, 104, 153, 0.18), transparent 55%),
         radial-gradient(circle at 15% 75%, rgba(197, 160, 89, 0.12), transparent 50%),
         linear-gradient(180deg, #070a11 0%, #0d121c 45%, #05070b 100%);
-      min-height: 68vh;
-      padding: 90px 20px 95px;
+      min-height: auto;
+      padding: 38px 20px 41px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -202,35 +185,39 @@
     }
 
     .hero-title {
-      font-size: clamp(28px, 5.2vw, 54px);
+      font-size: clamp(26px, 4.8vw, 50px);
       font-weight: 900;
       color: #fff;
-      line-height: 1.28;
+      line-height: 1.26;
       text-shadow: 0 4px 24px rgba(0,0,0,0.95);
-      margin-bottom: 18px;
+      margin-bottom: 12px;
       letter-spacing: -0.5px;
     }
+
     .hero-desc {
-      font-size: clamp(15px, 2.1vw, 20px);
+      font-size: clamp(14px, 1.85vw, 19px);
       color: #e2e8f0;
       font-weight: 400;
-      margin-bottom: 38px;
-      line-height: 1.65;
+      margin-bottom: 22px;
+      line-height: 1.15;
       text-shadow: 0 2px 14px rgba(0,0,0,0.9);
     }
+    .hero-desc-line {
+      display: inline-block;
+      white-space: nowrap;
+    }
 
-    /* 계약금 정보 2개 박스 (HERO 내부 유지) */
     .hero-info-group {
       display: flex;
       justify-content: center;
-      gap: 18px;
+      gap: 16px;
       width: 100%;
       max-width: 660px;
       margin: 0 auto;
     }
     .hero-info-card {
-      padding: 16px 20px;
-      border-radius: 18px;
+      padding: 14px 18px;
+      border-radius: 16px;
       flex: 1 1 0;
       min-width: 0;
       text-align: center;
@@ -238,7 +225,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
       cursor: default;
       user-select: none;
     }
@@ -253,17 +240,17 @@
       backdrop-filter: blur(8px);
     }
     .hero-info-card .info-sub {
-      font-size: clamp(14px, 1.8vw, 18px);
+      font-size: clamp(13px, 1.6vw, 17px);
       color: #cbd5e1;
       font-weight: 600;
       line-height: 1.3;
     }
     .hero-info-card .info-main {
-      font-size: clamp(22px, 2.7vw, 32px);
+      font-size: clamp(20px, 2.5vw, 30px);
       color: var(--gold-light);
       font-weight: 900;
       line-height: 1.3;
-      margin-top: 4px;
+      margin-top: 3px;
     }
     .hero-info-card.secondary .info-main {
       color: #ffffff;
@@ -326,26 +313,33 @@
       height: auto;
       display: block;
     }
+
     .slider-indicators {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 8px;
-      padding: 14px 10px;
+      padding: 12px 14px;
       background: #0c1018;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      width: 100%;
     }
     .slider-indicators .indicator {
-      padding: 8px 16px;
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 9px 6px;
       border-radius: 20px;
       background: #141b27;
       color: #94a3b8;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.25s;
       border: 1px solid var(--border-dark);
       user-select: none;
+      text-align: center;
+      white-space: nowrap;
     }
     .slider-indicators .indicator.active {
       background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
@@ -749,7 +743,7 @@
     }
 
     /* -----------------------------------------------------------
-       12. 신규 모바일 2단 고정 영역 (3개 박스 + 전화/예약 버튼)
+       12. 모바일 2단 고정 영역 (3개 박스 + 전화/예약 버튼)
     ----------------------------------------------------------- */
     .fixed-bottom-wrap {
       display: none;
@@ -762,7 +756,6 @@
       box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.9);
     }
 
-    /* 1단: 메인에서 이동해온 3개 핵심 박스 (가로 1줄 3분할) */
     .fixed-top-badges {
       display: flex;
       gap: 6px;
@@ -805,7 +798,6 @@
       letter-spacing: -0.4px;
     }
 
-    /* 2단: 기존 전화상담 / 상담예약 버튼 (50:50 분할) */
     .fixed-bottom-bar {
       display: flex;
       height: 54px;
@@ -853,7 +845,7 @@
     }
 
     /* -----------------------------------------------------------
-       13. Popup Modal (닫기 버튼 단일화, 방문마다 표시)
+       13. Popup Modal
     ----------------------------------------------------------- */
     .popup-overlay {
       position: fixed;
@@ -902,7 +894,7 @@
     }
 
     /* -----------------------------------------------------------
-       14. Responsive Media Queries (모바일 최적화)
+       14. Responsive Media Queries
     ----------------------------------------------------------- */
     @media (max-width: 992px) {
       .nav-menu {
@@ -932,41 +924,67 @@
 
     @media (max-width: 768px) {
       body {
-        padding-bottom: 115px; /* 2단 하단바로 인한 본문 가림 완벽 방지 */
+        padding-bottom: 115px;
       }
       #hero {
-        padding: 60px 14px 65px;
-        min-height: auto;
+        padding: 28px 12px 32px;
       }
 
-      /* 계약 정보 2개 박스: 모바일 가로 1줄(50:50) 유지 */
+      .hero-title {
+        font-size: clamp(23px, 6.2vw, 32px);
+        margin-bottom: 8px;
+      }
+
+      .hero-desc {
+        font-size: clamp(11.5px, 3.1vw, 14.5px);
+        letter-spacing: -0.4px;
+        line-height: 1.15;
+        margin-bottom: 16px;
+      }
+      .hero-desc-line {
+        display: block;
+        white-space: nowrap;
+      }
+
       .hero-info-group {
         display: flex;
         flex-wrap: nowrap;
-        gap: 10px;
+        gap: 8px;
         width: 100%;
       }
       .hero-info-card {
         flex: 1 1 0;
         min-width: 0;
-        padding: 12px 6px;
-        border-radius: 13px;
+        padding: 10px 4px;
+        border-radius: 12px;
         border-width: 1.5px;
       }
       .hero-info-card .info-sub {
-        font-size: clamp(12px, 3.4vw, 15px);
+        font-size: clamp(11px, 3.2vw, 13.5px);
         letter-spacing: -0.3px;
         white-space: nowrap;
       }
       .hero-info-card .info-main {
-        font-size: clamp(16px, 4.6vw, 22px);
+        font-size: clamp(15px, 4.4vw, 20px);
         letter-spacing: -0.4px;
         white-space: nowrap;
         margin-top: 2px;
       }
 
+      .slider-indicators {
+        gap: 5px;
+        padding: 10px 8px;
+        flex-wrap: nowrap;
+      }
+      .slider-indicators .indicator {
+        padding: 8px 2px;
+        font-size: clamp(10.5px, 2.95vw, 13px);
+        letter-spacing: -0.3px;
+        white-space: nowrap;
+      }
+
       .section-dark {
-        padding: 50px 0;
+        padding: 45px 0;
       }
       .form-row {
         grid-template-columns: 1fr;
@@ -975,15 +993,14 @@
         grid-column: span 1;
       }
       .reservation-card {
-        padding: 30px 18px;
+        padding: 28px 16px;
       }
       
-      /* 모바일에서 2단 하단 고정바 노출 */
       .fixed-bottom-wrap {
         display: flex;
       }
       .floating-nav {
-        bottom: 125px; /* 2단 하단바 위로 이동하여 겹침 방지 */
+        bottom: 125px;
         right: 15px;
       }
       .spec-table th, .spec-table td {
@@ -1000,7 +1017,7 @@
 </head>
 <body>
 
-  <!-- Header GNB -->
+  <!-- Header GNB (우측 상단 전화 버튼 없음) -->
   <header id="main-header">
     <div class="container">
       <div class="nav-inner">
@@ -1022,10 +1039,6 @@
           </ul>
         </nav>
         <div class="nav-actions">
-          <a href="tel:15550031" class="btn-header-call" title="010-2010-8563 전화상담 연결">
-            <svg style="width:16px;height:16px;fill:currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            010-2010-8563
-          </a>
           <button class="mobile-menu-toggle" id="menuToggle" aria-label="메뉴 열기">
             <span></span>
             <span></span>
@@ -1036,16 +1049,15 @@
     </div>
   </header>
 
-  <!-- 1. 메인 HERO 섹션 (6.jpg 제거 & 프리미엄 CSS 배경 적용 & 3개 박스는 하단바로 이동 완료) -->
+  <!-- 1. 메인 HERO 섹션 -->
   <section id="hero">
     <div class="hero-content">
       <h1 class="hero-title">병점역 新주거타운의 중심<br>오산헤리티지자이</h1>
       <p class="hero-desc">
-        계약금 500만원으로 완성하는 동탄생활권 특급 주거 벨트<br>
-        26층 스카이라운지와 단지 앞 1만평 체육공원을 품은 명품 라이프
+        <span class="hero-desc-line">계약금 500만원으로 완성하는 동탄생활권 특급 주거 벨트</span><br>
+        <span class="hero-desc-line">26층 스카이라운지와 단지 앞 1만평 체육공원을 품은 명품 라이프</span>
       </p>
 
-      <!-- 계약 혜택 2개 박스 (기존 정보 그대로 유지) -->
       <div class="hero-info-group">
         <div class="hero-info-card primary">
           <span class="info-sub">입주전까지</span>
@@ -1066,7 +1078,7 @@
     </div>
   </section>
 
-  <!-- 3. 2.jpg / 3.jpg / 4.jpg / 5.jpg 자동 슬라이드 (2초 주기 무한 반복) -->
+  <!-- 3. 2.jpg / 3.jpg / 4.jpg / 5.jpg 자동 슬라이드 -->
   <section id="location" class="section-dark">
     <div class="container">
       <div class="section-title-wrap">
@@ -1100,22 +1112,22 @@
     </div>
   </section>
 
-  <!-- 4. 특화 배너 트리오 -->
+  <!-- 4. 특화 배너 트리오 (010-2010-8563 연결) -->
   <section class="section-dark">
     <div class="container">
       <div class="banner-trio">
         <div class="banner-trio-item">
-          <a href="tel:15550031">
+          <a href="tel:010-2010-8563">
             <img src="banner01.png" alt="삼성전자 캠퍼스 직주근접 1783세대 대단지 1군 브랜드 500만원 계약가능">
           </a>
         </div>
         <div class="banner-trio-item">
-          <a href="tel:15550031">
+          <a href="tel:010-2010-8563">
             <img src="banner02.png" alt="신주거타운 중심 1만평 규모 체육공원 조성">
           </a>
         </div>
         <div class="banner-trio-item">
-          <a href="tel:15550031">
+          <a href="tel:010-2010-8563">
             <img src="banner03.png" alt="26층 전망 스카이라운지 커뮤니티 단지 내 사우나 키즈도서관 운영">
           </a>
         </div>
@@ -1123,7 +1135,7 @@
     </div>
   </section>
 
-  <!-- 5. SPECIAL BENEFIT 4 (benefit.png) -->
+  <!-- 5. SPECIAL BENEFIT 4 (010-2010-8563 연결) -->
   <section id="premium" class="section-dark">
     <div class="container">
       <div class="section-title-wrap">
@@ -1132,7 +1144,7 @@
         <p class="desc-head">GTX-C, 동탄트램, 안심학세권, 스카이라운지까지 모두 누리는 완벽한 가치</p>
       </div>
       <div class="showcase-box">
-        <a href="tel:15550031" title="010-2010-8563 전화상담 연결">
+        <a href="tel:010-2010-8563" title="010-2010-8563 전화상담 연결">
           <img src="benefit.png" alt="오산헤리티지자이 SPECIAL BENEFIT 4 프리미엄">
         </a>
       </div>
@@ -1254,7 +1266,7 @@
     </div>
   </section>
 
-  <!-- 11. FAQ 섹션 -->
+  <!-- 11. FAQ 섹션 (전화번호 010-2010-8563 반영) -->
   <section id="faq" class="section-dark">
     <div class="container">
       <div class="section-title-wrap">
@@ -1393,11 +1405,11 @@
           </button>
         </form>
 
-        <!-- Direct CTA -->
+        <!-- Direct CTA (010-2010-8563 반영) -->
         <div class="direct-call-box">
           <p class="direct-call-title">기다림 없이 지금 즉시 상담을 원하시나요?</p>
           <div class="direct-call-btns">
-            <a href="tel:15550031" class="btn-action-call" title="010-2010-8563 전화상담 연결">
+            <a href="tel:010-2010-8563" class="btn-action-call" title="010-2010-8563 전화상담 연결">
               <svg style="width:20px;height:20px;fill:currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
               📞 대표문의 010-2010-8563
             </a>
@@ -1407,7 +1419,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer (010-2010-8563 반영) -->
   <footer>
     <div class="container">
       <div class="footer-inner">
@@ -1416,7 +1428,7 @@
             <img src="logo-color.png" alt="오산헤리티지자이">
           </div>
           <div class="footer-info">
-            <p><strong>오산헤리티지자이 공식 분양홍보관</strong> | 분양문의: <a href="tel:15550031">010-2010-8563</a></p>
+            <p><strong>오산헤리티지자이 공식 분양홍보관</strong> | 분양문의: <a href="tel:010-2010-8563">010-2010-8563</a></p>
             <p>현장 위치: 경기도 오산시 양산동 223번지 일원 (1BL / 2BL)</p>
             <p>시행: (주)양산사지구에스피씨 | 시공: GS건설(주)</p>
           </div>
@@ -1437,9 +1449,8 @@
     <a href="#hero" class="btn-float top" title="맨 위로 이동">TOP</a>
   </div>
 
-  <!-- 신규 모바일 2단 고정 영역: 1단(메인 3개 박스) + 2단(전화상담/상담예약) -->
+  <!-- 모바일 2단 고정 영역: 1단(3개 박스) + 2단(010-2010-8563 전화상담/상담예약) -->
   <div class="fixed-bottom-wrap" id="fixedBottomWrap">
-    <!-- 1단: 메인 HERO에서 이동해온 3개 핵심 박스 (가로 1줄 3등분 배치) -->
     <div class="fixed-top-badges">
       <div class="fixed-badge-card">
         <span class="badge-top">1,783세대</span>
@@ -1455,9 +1466,8 @@
       </div>
     </div>
 
-    <!-- 2단: 기존 전화상담 / 상담예약 버튼 바 -->
     <div class="fixed-bottom-bar" id="fixedBottomBar">
-      <a href="tel:15550031" class="btn-bottom-action call" title="010-2010-8563 전화상담 연결">
+      <a href="tel:010-2010-8563" class="btn-bottom-action call" title="010-2010-8563 전화상담 연결">
         <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
         <span>전화상담</span>
       </a>
@@ -1468,7 +1478,7 @@
     </div>
   </div>
 
-  <!-- Special Benefit Popup Modal (방문마다 표시, 닫기 버튼 단일화) -->
+  <!-- Special Benefit Popup Modal -->
   <div class="popup-overlay" id="popupModal">
     <div class="popup-box">
       <img src="popup.jpg" alt="파격 조건변경 입주시까지 계약금 5% 계약고객 백화점 상품권 100만원 증정">
@@ -1495,7 +1505,7 @@
       });
     });
 
-    // 2. 자동 슬라이드 (2초 간격 무한 반복: 2.jpg -> 3.jpg -> 4.jpg -> 5.jpg)
+    // 2. 자동 슬라이드 (2초 간격)
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide-item');
     const indicators = document.querySelectorAll('.slider-indicators .indicator');
@@ -1558,7 +1568,7 @@
       });
     }
 
-    // 6. 팝업창 제어: 페이지 방문마다 무조건 표시, 닫기는 현재 페이지만 적용
+    // 6. 팝업창 제어
     function openPopup() {
       const modal = document.getElementById('popupModal');
       if (modal) {
@@ -1580,7 +1590,7 @@
       startSlideInterval();
     });
 
-    // 8. 예약 신청 전송 기능 (기존 FormSubmit 유지)
+    // 8. 예약 신청 전송 기능
     async function submitReservation(event) {
       event.preventDefault();
 
