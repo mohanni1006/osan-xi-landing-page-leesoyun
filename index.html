@@ -80,7 +80,7 @@
     }
 
     /* -----------------------------------------------------------
-       2. Header GNB (우측 상단 전화 버튼 없음)
+       2. Header GNB
     ----------------------------------------------------------- */
     header {
       position: sticky;
@@ -151,7 +151,7 @@
     }
 
     /* -----------------------------------------------------------
-       3. 메인 HERO 섹션
+       3. 메인 HERO 섹션 (상하 여백 25% 축소 & 설명 문구 간격 80% 축소)
     ----------------------------------------------------------- */
     #hero {
       position: relative;
@@ -845,7 +845,7 @@
     }
 
     /* -----------------------------------------------------------
-       13. Popup Modal
+       13. Popup Modal (방문마다 표시, 닫기 버튼 단일화)
     ----------------------------------------------------------- */
     .popup-overlay {
       position: fixed;
@@ -894,7 +894,7 @@
     }
 
     /* -----------------------------------------------------------
-       14. Responsive Media Queries
+       14. Responsive Media Queries (모바일 최적화)
     ----------------------------------------------------------- */
     @media (max-width: 992px) {
       .nav-menu {
@@ -1017,7 +1017,7 @@
 </head>
 <body>
 
-  <!-- Header GNB (우측 상단 전화 버튼 없음) -->
+  <!-- Header GNB -->
   <header id="main-header">
     <div class="container">
       <div class="nav-inner">
@@ -1112,7 +1112,7 @@
     </div>
   </section>
 
-  <!-- 4. 특화 배너 트리오 (010-2010-8563 연결) -->
+  <!-- 4. 특화 배너 트리오 (전화번호 010-2010-8563 적용) -->
   <section class="section-dark">
     <div class="container">
       <div class="banner-trio">
@@ -1135,7 +1135,7 @@
     </div>
   </section>
 
-  <!-- 5. SPECIAL BENEFIT 4 (010-2010-8563 연결) -->
+  <!-- 5. SPECIAL BENEFIT 4 (전화번호 010-2010-8563 적용) -->
   <section id="premium" class="section-dark">
     <div class="container">
       <div class="section-title-wrap">
@@ -1151,7 +1151,7 @@
     </div>
   </section>
 
-  <!-- 6. 사업개요 (summary.png + Spec Table) -->
+  <!-- 6. 사업개요 -->
   <section id="overview" class="section-dark">
     <div class="container">
       <div class="section-title-wrap">
@@ -1210,7 +1210,7 @@
     </div>
   </section>
 
-  <!-- 7. 단지배치도 (siteplan.png) -->
+  <!-- 7. 단지배치도 -->
   <section id="siteplan" class="section-dark">
     <div class="container">
       <div class="section-title-wrap">
@@ -1224,7 +1224,7 @@
     </div>
   </section>
 
-  <!-- 8. 세대평면 (type.png) -->
+  <!-- 8. 세대평면 -->
   <section id="types" class="section-dark">
     <div class="container">
       <div class="section-title-wrap">
@@ -1238,7 +1238,7 @@
     </div>
   </section>
 
-  <!-- 9. 커뮤니티 (community.png) -->
+  <!-- 9. 커뮤니티 -->
   <section id="community" class="section-dark">
     <div class="container">
       <div class="section-title-wrap">
@@ -1252,7 +1252,7 @@
     </div>
   </section>
 
-  <!-- 10. 인테리어 갤러리 (interior.png) -->
+  <!-- 10. 인테리어 갤러리 -->
   <section id="interior" class="section-dark">
     <div class="container">
       <div class="section-title-wrap">
@@ -1266,7 +1266,7 @@
     </div>
   </section>
 
-  <!-- 11. FAQ 섹션 (전화번호 010-2010-8563 반영) -->
+  <!-- 11. FAQ 섹션 (대표번호 010-2010-8563 적용) -->
   <section id="faq" class="section-dark">
     <div class="container">
       <div class="section-title-wrap">
@@ -1329,7 +1329,7 @@
     </div>
   </section>
 
-  <!-- 12. 최종 상담 예약 -->
+  <!-- 12. 최종 상담 예약 (전화번호 010-2010-8563 적용) -->
   <section id="reservation">
     <div class="container">
       <div class="reservation-card">
@@ -1405,7 +1405,7 @@
           </button>
         </form>
 
-        <!-- Direct CTA (010-2010-8563 반영) -->
+        <!-- Direct CTA (전화번호 010-2010-8563 적용) -->
         <div class="direct-call-box">
           <p class="direct-call-title">기다림 없이 지금 즉시 상담을 원하시나요?</p>
           <div class="direct-call-btns">
@@ -1419,7 +1419,7 @@
     </div>
   </section>
 
-  <!-- Footer (010-2010-8563 반영) -->
+  <!-- Footer (전화번호 010-2010-8563 적용) -->
   <footer>
     <div class="container">
       <div class="footer-inner">
@@ -1449,7 +1449,7 @@
     <a href="#hero" class="btn-float top" title="맨 위로 이동">TOP</a>
   </div>
 
-  <!-- 모바일 2단 고정 영역: 1단(3개 박스) + 2단(010-2010-8563 전화상담/상담예약) -->
+  <!-- 모바일 2단 고정 영역: 1단 + 2단 (전화번호 010-2010-8563 적용) -->
   <div class="fixed-bottom-wrap" id="fixedBottomWrap">
     <div class="fixed-top-badges">
       <div class="fixed-badge-card">
@@ -1505,7 +1505,7 @@
       });
     });
 
-    // 2. 자동 슬라이드 (2초 간격)
+    // 2. 자동 슬라이드
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide-item');
     const indicators = document.querySelectorAll('.slider-indicators .indicator');
@@ -1590,7 +1590,7 @@
       startSlideInterval();
     });
 
-    // 8. 예약 신청 전송 기능
+    // 8. 예약 신청 전송 기능 ([이소윤] 담당자 및 제목 변경 적용)
     async function submitReservation(event) {
       event.preventDefault();
 
@@ -1620,7 +1620,8 @@
       submitBtn.innerText = '상담 접수 전송 중...';
 
       const payload = {
-        _subject: "[오산 헤리티지 자이] 신규 상담예약 접수",
+        _subject: "[이소윤] 오산헤리티지자이 신규 상담예약 접수",
+        "담당자": "이소윤",
         "신청자명": name,
         "연락처": phone,
         "통화가능시간": timeSlot,
